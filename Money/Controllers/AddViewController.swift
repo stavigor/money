@@ -128,23 +128,27 @@ class AddViewController: UIViewController {
         case "+":
             resetLabelText = true
             let answer = firstValue + Double(valueLabel.text!)!
-            valueLabel.text = String(answer)
-            firstValue = answer
+            let roundedAnswer = Double(round(100*answer)/100)
+            valueLabel.text = String(roundedAnswer)
+            firstValue = roundedAnswer
         case "-":
             resetLabelText = true
             let answer = firstValue - Double(valueLabel.text!)!
-            valueLabel.text = String(answer)
-            firstValue = answer
+            let roundedAnswer = Double(round(100*answer)/100)
+            valueLabel.text = String(roundedAnswer)
+            firstValue = roundedAnswer
         case "*":
             resetLabelText = true
             let answer = firstValue * Double(valueLabel.text!)!
-            valueLabel.text = String(answer)
-            firstValue = answer
+            let roundedAnswer = Double(round(100*answer)/100)
+            valueLabel.text = String(roundedAnswer)
+            firstValue = roundedAnswer
         case "/":
             resetLabelText = true
             let answer = firstValue / Double(valueLabel.text!)!
-            valueLabel.text = String(answer)
-            firstValue = answer
+            let roundedAnswer = Double(round(100*answer)/100)
+            valueLabel.text = String(roundedAnswer)
+            firstValue = roundedAnswer
         default:
            return
         }
@@ -211,7 +215,7 @@ class AddViewController: UIViewController {
             realm.add(newTransaction)
             try! realm.commitWrite()
             
-            performAlert(message: "You've been successfully added a new transaction!")
+            performAlert(message: "You've successfully added a new transaction!")
         }
         
     }
@@ -237,7 +241,9 @@ class AddViewController: UIViewController {
     
     func performAlert(message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { (action) in
+            self.navigationController?.popViewController(animated: true)
+        })
         self.present(alert, animated: true, completion: nil)
     }
     
