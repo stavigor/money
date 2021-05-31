@@ -2,7 +2,7 @@
 //  WelcomeViewController.swift
 //  Greatest Volcanoes
 //
-//  Created by Игорь Растегаев on 25.01.2021.
+//  Created by Igor Rastegaev on 25.01.2021.
 //
 
 import UIKit
